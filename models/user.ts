@@ -18,17 +18,22 @@ const userSchema = new Schema<User>({
         required: true,
         unique: true,
         validate:{
-            validator: (email) =>{
-                if (email.includes("@") && email.includes('.')){
-                    return true;
-                }else{
-                    return false;
-                }
+              validator: function (v) {
+                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
+              },
+              message: 'Please enter a valid email',
             },
-            message: "El formato del correo electrónico está malo"
-        }
-
-    },
+    },    
+                
+                // (email) =>{
+                //     if (email.includes("@") && email.includes('.')){
+                //         return true;
+                //     }else{
+                //         return false;
+                //     }
+                // },
+                // message: "El formato del correo electrónico está malo"
+  
     identificacion:{
         type: String,
         required: true,
