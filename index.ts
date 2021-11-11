@@ -27,12 +27,12 @@ const main = async () => {
 //         console.error("error obteniendo los usuarios", e)
 //     });
   //OBTENER UN USUARIO
-  await UserModel.findOne({identificacion:"543235"})
-  .then((u) =>{
-    console.log("usuario encontrado", u);
-    }).catch((e) => {
-        console.error(e);
-    })
+//   await UserModel.findOne({identificacion:"543235"})
+//   .then((u) =>{
+//     console.log("usuario encontrado", u);
+//     }).catch((e) => {
+//         console.error(e);
+//     })
    //EDITAR UN USUARIO
 //    await UserModel.findOneAndUpdate({correo: "sa@Calo.com"},{
 //     nombre: "Sarita",
