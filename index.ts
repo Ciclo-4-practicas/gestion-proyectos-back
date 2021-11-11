@@ -17,7 +17,7 @@ const main = async () => {
         console.log("usuario creado", u);
     })
     .catch((e) => {
-        console.error("Error creando el ususario", e)
+        console.error("Error creando el usuario", e)
     });
        //OBTENER LOS USUARIOS
 //    await UserModel.find().then((u) => {
