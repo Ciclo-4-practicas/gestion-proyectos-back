@@ -1,6 +1,16 @@
 import { Schema, model } from "mongoose";
+import {Enum_Rol} from "./enums"
 
-const userSchema = new Schema({
+
+interface User{
+    correo:string;
+    identificacion:string;
+    nombre:string;
+    apellido:string;
+    rol: Enum_Rol;
+}
+
+const userSchema = new Schema<User>({
     correo:{
         type:String,
         required: true,
@@ -22,7 +32,7 @@ const userSchema = new Schema({
     rol:{
         type:String,
         required:true,
-        enum:["Estudiante", "Líder", "Administrador"],
+        enum:Enum_Rol,
     }
 });
 const UserModel = model("User", userSchema);
