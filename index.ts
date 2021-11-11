@@ -5,20 +5,22 @@ import { Enum_Rol } from "./models/enums";
 const main = async () => {
     await conectarBD();
 
-    // await UserModel.create({
-    //     correo: "sa@Calo.com",
-    //     identificacion: "543235",
-    //     nombre: "Sara",
-    //     apellido: "Sandoval",
-    //     rol: Enum_Rol.lider,
+  //CREAR UN USUARIO
+    await UserModel.create({
+        correo: "dan@Calo.com",
+        identificacion: "506070",
+        nombre: "Danilo",
+        apellido: "Herrera",
+        rol: Enum_Rol.administrador,
+    
 
-    // })
-    // .then((u) => {
-    //     console.log("usuario creado", u);
-    // })
-    // .catch((e) => {
-    //     console.error("Error creando el usuario", e)
-    // });
+    })
+    .then((u) => {
+        console.log("usuario creado", u);
+    })
+    .catch((e) => {
+        console.error("Error creando el usuario", e)
+    });
        //OBTENER USUARIOS
 //    await UserModel.find().then((u) => {
 //         console.log("usuarios", u);
