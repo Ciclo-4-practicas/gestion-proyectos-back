@@ -6,7 +6,7 @@ const main = async () => {
 
     await UserModel.create({
         correo:"dsl@c.com",
-        identificacion: "12342",
+        identificacion: "12343452",
         nombre: "pepito",
         apellido: "Ramirez"
 
