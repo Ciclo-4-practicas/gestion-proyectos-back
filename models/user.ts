@@ -18,6 +18,11 @@ const userSchema = new Schema({
     apellido:{
         type:String,
         required: true,
+    },
+    rol:{
+        type:String,
+        required:true,
+        enum:["Estudiante", "Líder", "Administrador"],
     }
 });
 const UserModel = model("User", userSchema);
