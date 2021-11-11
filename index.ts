@@ -8,7 +8,7 @@ const main = async () => {
 
   //CREAR UN USUARIO
     await UserModel.create({
-        correo: "dan@Calo.com",
+        correo: "dan@Calo.com", /* Si quitamos el ""." o "@" se genera un error de validación*/ 
         identificacion: "506070",
         nombre: "Danilo",
         apellido: "Herrera",
