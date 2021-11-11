@@ -24,7 +24,8 @@ const userSchema = new Schema<User>({
               message: 'Please enter a valid email',
             },
     },    
-                
+                //Forma muy bàsica de hacer validaciòn tiene errores pues se podrìa escribir correos tipo:
+                // del.con@algo
                 // (email) =>{
                 //     if (email.includes("@") && email.includes('.')){
                 //         return true;
