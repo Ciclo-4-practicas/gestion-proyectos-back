@@ -4,22 +4,25 @@ import { Enum_Rol } from "./models/enums";
 
 const main = async () => {
     await conectarBD();
- // AGREGAR USUARIO
-    // await UserModel.create({
-    //     correo: "sa@Calo.com",
-    //     identificacion: "786435",
-    //     nombre: "Sara",
-    //     apellido: "Sandoval",
-    //     rol: Enum_Rol.lider,
 
-    // })
-    // .then((u) => {
-    //     console.log("usuario creado", u);
-    // })
-    // .catch((e) => {
-    //     console.error("Error creando el usuario", e)
-    // });
-       //OBTENER LOS USUARIOS
+
+  //CREAR UN USUARIO
+    await UserModel.create({
+        correo: "dan@Calo.com", /* Si quitamos el ""." o "@" se genera un error de validación*/ 
+        identificacion: "506070",
+        nombre: "Danilo",
+        apellido: "Herrera",
+        rol: Enum_Rol.administrador,
+    
+
+    })
+    .then((u) => {
+        console.log("usuario creado", u);
+    })
+    .catch((e) => {
+        console.error("Error creando el usuario", e)
+    });
+       //OBTENER USUARIOS
 //    await UserModel.find().then((u) => {
 //         console.log("usuarios", u);
 //     })
@@ -49,6 +52,20 @@ const main = async () => {
 //     }).catch((e) =>{
 //         console.error(e);
 //     });
-};
+//};
 
+//    }).then((u) =>{
+//        console.log('usuario actualizado', u);
+//    }).catch((e) =>{
+//        console.error('Error actualizando')
+//    });
+// };
+//   //ELIMINAR UN USUARIO
+//   await UserModel.findOneAndDelete({correo: "dsl@c.com"}).then((u) =>{
+//       console.log("usuario eliminado: ", u);
+//   }).catch((e) =>{
+//       console.error(e);
+//   })
+  
+};
 main()
