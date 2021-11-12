@@ -1,28 +1,31 @@
 import conectarBD from "./db/db";
 import {UserModel} from "./models/user";
-import { Enum_Rol } from "./models/enums";
+import { Enum_Rol, Enum_TipoObjetivo } from "./models/enums";
 import { ProjectModel } from "./models/project";
 import { ObjectId } from "mongoose";
+import { ObjectiveModel } from "./models/objective";
 
 const main = async () => {
     await conectarBD();
-
+    // const objet = await ObjectiveModel.create({
+    //     descripcion: "Este es el objetivo específico",
+    //     tipo: Enum_TipoObjetivo.especifico,
+    // })
+        //CREAR PROYECTO
     // ProjectModel.create({
-    //     nombre: "Proyecto 2",
-    //     presupuesto:120,
+    //     nombre: "Proyecto 3",
+    //     presupuesto:125,
     //     fechaInicio: Date.now(),
     //     fechaFin: new Date ("2022/11/10"),
-    //     lider: "618d7673464ac96a96cdddc2"
+    //     lider: "618d7673464ac96a96cdddc2",
+    //     objetivos: [ "618dd94f50d8c67712c061e1", "618dd8c3c574d7588f0cf263"]
 
     // })
-      //REFERENCIA FUERTE
-    const proyecto = await ProjectModel.find({nombre: "Proyecto 2"}).populate("lider");
-    console.log("el proyecto es: ", proyecto);
-   //REFERENCIA DÉBIL
-    // const proyecto: any = await ProjectModel.find({nombre:"Proyecto 1"});
-    // console.log("El proyecto es: ", proyecto, proyecto.lider) 
-    // const lider = await UserModel.find({_id: proyecto[0].lider})
-    // console.log ("El líder del proyecto es: ", lider)
+
+    const proyecto = await ProjectModel.find({nombre: "Proyecto 3"})
+    .populate("lider")
+    .populate("objetivos");
+    console.log("el proyecto es: ", JSON.stringify(proyecto));
 
   
 };
