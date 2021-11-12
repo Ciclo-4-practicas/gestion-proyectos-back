@@ -21,7 +21,7 @@ const userSchema = new Schema<User>({
               validator: function (v) {
                 return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
               },
-              message: 'Please enter a valid email',
+              message: 'Por favor introduzca una dirección de correo electrónico válida',
             },
     },    
                 //Forma muy bàsica de hacer validaciòn tiene errores pues se podrìa escribir correos tipo:
@@ -35,6 +35,7 @@ const userSchema = new Schema<User>({
                 // },
                 // message: "El formato del correo electrónico está malo"
   
+                
     identificacion:{
         type: String,
         required: true,
