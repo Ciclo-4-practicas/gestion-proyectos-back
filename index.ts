@@ -1,75 +1,40 @@
-import connectDB from './db/db';
-import UserModel from './models/user';
-import * as Enums from './models/enums';
-import ProjectModel from './models/project';
+import conectarBD from "./db/db";
+import {UserModel} from "./models/user";
+import { Enum_EstadoUsuario, Enum_Rol, Enum_TipoObjetivo } from "./models/enums";
+import { ProjectModel } from "./models/project";
+import { ObjectId } from "mongoose";
 
-// const Customer = require('./models/customer');
-// const Order = require('./models/order');
-
-// Customer.insertMany([
-//   {
-//     name: 'Daniel',
-//     email: 'dsl@c.com',
-//   },
-//   {
-//     name: 'Susana',
-//     email: 's@c.com',
-//   },
-// ])
-//   .then((c) => {
-//     console.log(c);
-//   })
-//   .catch((e) => {
-//     console.error(e);
-//   });
-
-// const customers = await Customer.find().then((c) => {
-//   return c;
-// });
-// Order.create({
-//   total: 1500,
-//   customer_id: customers[0]._id,
-// });
-
-// UserModel.create({
-//   name: 'Daniel',
-//   lastName: 'Saldarriaga',
-//   document: '1065377193',
-//   email: 'dsl1@c.com',
-//   role: Enums.Enum_UserRole.estudiante,
-// })
-//   .then((u) => {
-//     console.log(u);
-//   })
-//   .catch((e) => {
-//     console.error(e);
-//   });
-
-// ProjectModel.create({
-//   name: 'Test',
-//   budget: 120,
-//   startDate: Date.now(),
-//   finishDate: new Date('2022/11/10'),
-//   leader: '6187d3a20a1d2fc06ea9b1f0',
-// })
-//   .then((p) => {
-//     console.log('project', p);
-//   })
-//   .catch((e) => {
-//     console.error(e);
-//   });
-
-// ProjectModel.findOne({ _id: '6187d906541df1983cd78518' })
-//   .populate('leader')
-//   .then((p) => {
-//     console.log(p);
-//   });
 
 const main = async () => {
-  await connectDB();
+    await conectarBD();
 
-  // order = await Order.find({ customer_id: '6186629a2dde6bb7f645aeaf' });
-  // console.log(order);
-};
+    //METODOLOGÍA ONE TO MANY #3
+    const crearProyectoConObjetivos3 = async () =>{
+        const usuarioInicial = await UserModel.create({
+            correo: "pepe@let.com", /* Si quitamos el ""." o "@" se genera un error de validación*/ 
+            identificacion: "1037856",
+            nombre: "Pepe",
+            apellido: "Gaviria",
+            rol: Enum_Rol.administrador,
+            estado: Enum_EstadoUsuario.autorizado
+        })
+        const proyectoCreado = await ProjectModel.create({
+            nombre: "Proyecto Mision Tic",
+            presupuesto:125000,
+            fechaInicio: Date.now(),
+            fechaFin: new Date ("2022/11/10"),
+            lider: "618d7673464ac96a96cdddc2",
+            objetivos: [ 
+                {descripcion: "Este es el objetivo general", tipo: Enum_TipoObjetivo.general},
+                {descripcion: "Esteay es el objetivo especifico1", tipo: Enum_TipoObjetivo.especifico},
+                {descripcion: "Este es el objetivo especifico2", tipo: Enum_TipoObjetivo.especifico},
+                
+            ]
+        })
 
-main();
+    }
+    const proyectoCreado = await ProjectModel.find({id: "619347bbc5b9c645ab035944"})
+    console.log ("proyecto ", proyectoCreado)
+
+}
+main()
