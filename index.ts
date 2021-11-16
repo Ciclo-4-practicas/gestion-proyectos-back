@@ -1,54 +1,32 @@
 import conectarBD from "./db/db";
 import {UserModel} from "./models/user";
-import { Enum_Rol } from "./models/enums";
+import { Enum_Rol, Enum_TipoObjetivo } from "./models/enums";
+import { ProjectModel } from "./models/project";
+import { ObjectId } from "mongoose";
+import { ObjectiveModel } from "./models/objective";
 
 const main = async () => {
     await conectarBD();
- // AGREGAR USUARIO
-    // await UserModel.create({
-    //     correo: "sa@Calo.com",
-    //     identificacion: "786435",
-    //     nombre: "Sara",
-    //     apellido: "Sandoval",
-    //     rol: Enum_Rol.lider,
+    // const objet = await ObjectiveModel.create({
+    //     descripcion: "Este es el objetivo específico",
+    //     tipo: Enum_TipoObjetivo.especifico,
+    // })
+        //CREAR PROYECTO
+    // ProjectModel.create({
+    //     nombre: "Proyecto 3",
+    //     presupuesto:125,
+    //     fechaInicio: Date.now(),
+    //     fechaFin: new Date ("2022/11/10"),
+    //     lider: "618d7673464ac96a96cdddc2",
+    //     objetivos: [ "618dd94f50d8c67712c061e1", "618dd8c3c574d7588f0cf263"]
 
     // })
-    // .then((u) => {
-    //     console.log("usuario creado", u);
-    // })
-    // .catch((e) => {
-    //     console.error("Error creando el usuario", e)
-    // });
-       //OBTENER LOS USUARIOS
-//    await UserModel.find().then((u) => {
-//         console.log("usuarios", u);
-//     })
-//     .catch((e) => {
-//         console.error("error obteniendo los usuarios", e)
-//     });
-  //OBTENER UN USUARIO
-//   await UserModel.findOne({identificacion:"543235"})
-//   .then((u) =>{
-//     console.log("usuario encontrado", u);
-//     }).catch((e) => {
-//         console.error(e);
-//     })
-   //EDITAR UN USUARIO
-//    await UserModel.findOneAndUpdate({correo: "sa@Calo.com"},{
-//     nombre: "Sarita",
-//     apellido: "López",
 
-//     }).then((u) =>{
-//         console.log('usuario actualizado', u);
-//     }).catch((e) =>{
-//         console.error('Error actualizando')
-//     });
-//    //ELIMINAR UN USUARIO
-//    await UserModel.findOneAndDelete({correo: "dsl@c.com"}).then((u) =>{
-//     console.log("usuario eliminado: ", u);
-//     }).catch((e) =>{
-//         console.error(e);
-//     });
+    const proyecto = await ProjectModel.find({nombre: "Proyecto 3"})
+    .populate("lider")
+    .populate("objetivos");
+    console.log("el proyecto es: ", JSON.stringify(proyecto));
+
+  
 };
-
 main()
