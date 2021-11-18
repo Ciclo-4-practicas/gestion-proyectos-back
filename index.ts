@@ -2,7 +2,6 @@ import conectarBD from "./db/db";
 import {UserModel} from "./models/user";
 import { Enum_EstadoUsuario, Enum_Rol, Enum_TipoObjetivo } from "./models/enums";
 import { ProjectModel } from "./models/project";
-import { ObjectId } from "mongoose";
 
 
 const main = async () => {
@@ -27,8 +26,7 @@ const main = async () => {
             objetivos: [ 
                 {descripcion: "Este es el objetivo general", tipo: Enum_TipoObjetivo.general},
                 {descripcion: "Esteay es el objetivo especifico1", tipo: Enum_TipoObjetivo.especifico},
-                {descripcion: "Este es el objetivo especifico2", tipo: Enum_TipoObjetivo.especifico},
-                
+                {descripcion: "Este es el objetivo especifico2", tipo: Enum_TipoObjetivo.especifico},              
             ]
         })
 
