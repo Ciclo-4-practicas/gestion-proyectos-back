@@ -1,4 +1,4 @@
-import { connect } from "mongoose";
+import { connect } from 'mongoose';
 
 const conectarBD = async () =>{
     return await connect(process.env.DATABASE_URL)
