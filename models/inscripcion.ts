@@ -16,11 +16,11 @@ const inscriptionSchema = new Schema <Inscription>({
         type: String,
         enum: Enum_EstadoIncripcion,
         required: true,
-    }, 
+    },
     fechaIngreso: {
         type: Date,
         required: true,
-    }, 
+    },
     fechaEgreso:{
         type: Date,
         required: true,
@@ -33,7 +33,7 @@ const inscriptionSchema = new Schema <Inscription>({
     estudiante:{
         type:Schema.Types.ObjectId,
         ref: UserModel,
-        required: true, 
+        required: true,
     }
 })
 
