@@ -1,18 +1,10 @@
+import { UserModel } from "../models/user";
+
 const resolvers ={
 
     Query: {
         Usuarios: async (parent,args)=>{
-            const usuarios = [
-                {
-                    nombre: "Daniel",
-                },
-                {
-                    nombre: "Juan",
-                },
-                {
-                    nombre: "Pedro",
-                },
-            ]
+            const usuarios = await UserModel.find();
             return  usuarios;
         }
     },
