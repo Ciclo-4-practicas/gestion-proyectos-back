@@ -6,6 +6,10 @@ const resolvers ={
         Usuarios: async (parent,args)=>{
             const usuarios = await UserModel.find();
             return  usuarios;
+        },
+        Usuario: async(parent,args) =>{
+            const usuario= await UserModel.findOne({_id:args._id});
+            return usuario; 
         }
     },
     Mutation:{ 
