@@ -11,22 +11,20 @@ enum Enum_EstadoUsuario{
     NO_AUTORIZADO = "NO_AUTORIZADO"
 }
 enum Enum_EstadoProyecto{
-    activo = "Activo",
-    inactivo = "Inactivo",
-
+    ACTIVO = "ACTIVO",
+    INACTIVO = "INACTIVO"
 }
 
 enum Enum_FaseProyecto{
-    iniciado = "Iniciado",
-    desarrollo = "En Desarrollo",
-    terminado = "Terminado",
-    nula ="",
+    INICIADO = "INICIADO",
+    DESARROLLO = "DESARROLLO",
+    TERMIANDO = "TERMIANDO",
+    NULO = " "
 }
 
 enum Enum_TipoObjetivo{
-    general= "General",
-    especifico= "Específico",
-
+    GENERAL= "GENERAL",
+    ESPECIFICO = "ESPECIFICO",
 }
 
 enum Enum_EstadoIncripcion{
